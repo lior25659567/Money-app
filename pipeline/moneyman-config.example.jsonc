@@ -1,0 +1,38 @@
+// Moneyman config template.
+// Fill in the placeholders, paste the WHOLE file into a GitHub Actions secret
+// named MONEYMAN_CONFIG in your fork of daniel-hauser/moneyman, then delete the
+// filled-in copy. Never commit the filled-in version to this repo.
+{
+  "accounts": [
+    {
+      "companyId": "mizrahi",
+      "username": "YOUR_ID_NUMBER",
+      "password": "YOUR_MIZRAHI_PASSWORD"
+    },
+    {
+      "companyId": "visaCal",
+      "username": "YOUR_CAL_USERNAME",
+      "password": "YOUR_CAL_PASSWORD"
+    }
+  ],
+  "storage": {
+    "sql": {
+      // Supabase → Connect → Direct → Session pooler. Must contain pooler.supabase.com.
+      "connectionString": "postgresql://postgres.PROJECT_REF:DB_PASSWORD@aws-0-REGION.pooler.supabase.com:5432/postgres",
+      "schema": "moneyman"
+    }
+  },
+  "options": {
+    "scraping": {
+      // 365 for the first run (a year of history), then change to 10.
+      "daysBack": 365,
+      "timezone": "Asia/Jerusalem"
+    },
+    "notifications": {
+      "telegram": {
+        "apiKey": "TELEGRAM_BOT_TOKEN",
+        "chatId": "TELEGRAM_CHAT_ID"
+      }
+    }
+  }
+}
